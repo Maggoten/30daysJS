@@ -7,6 +7,21 @@
 </head>
 <body>
 <script>
+
+const pressedKey = [];
+const code = 'ronboss';
+
+window.addEventListener('keyup', (e) => {
+  console.log(e.key);
+  pressedKey.push(e.key);
+  pressedKey.splice(-code.length - 1, pressedKey.length - code.length);
+  if(pressedKey.join('').includes(code)) {
+    alert('ding ding');
+    cornify_add();
+  }
+  
+});
+
 </script>
 </body>
 </html>

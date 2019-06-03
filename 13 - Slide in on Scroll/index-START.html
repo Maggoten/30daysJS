@@ -58,6 +58,37 @@
       };
     }
 
+    const SliderImg = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e) {
+      SliderImg.forEach(img => {
+        const slideInAt = (window.scrollY + window.innerHeight) - img.height / 2;
+        const imgBottom = img.offsetTop + img.height;
+        const isHalfShown = slideInAt > img.offsetTop;
+        const isNotScrolledPast = window.scrollY < imgBottom;
+
+        console.log(`Glider in på ${slideInAt} pixlar`);
+        console.log(`Nederkanten på bilden är ${imgBottom} pixlar`);
+        console.log(`Halva bilden syns nu ${isHalfShown}`);
+        console.log(`Har inte scrollat förbi bilden ${isNotScrolledPast}`);
+        
+        
+        
+        
+
+
+
+        if(isHalfShown && isNotScrolledPast){
+          img.classList.add('active');
+        } else {
+          img.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide));
+
+
   </script>
 
   <style>
